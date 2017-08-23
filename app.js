@@ -79,22 +79,13 @@ window.SearchForm = {
     let el = document.createElement("a");
     el.setAttribute("href", `anime.html?id=${result.id}`);
     el.classList.add("anime-item");
+    el.style.backgroundImage = `url(${result.attributes.posterImage.large})`;
 
     let title = document.createElement("div");
     title.innerText = result.attributes.canonicalTitle;
     title.classList.add("anime-title");
 
-    let image = document.createElement("img");
-    image.classList.add("anime-poster");
-    image.setAttribute("src", result.attributes.posterImage.small);
-
-    let synopsis = document.createElement("p");
-    synopsis.classList.add("anime-synopsis");
-    synopsis.innerText = result.attributes.synopsis;
-
     el.appendChild(title);
-    el.appendChild(image);
-    /* el.appendChild(synopsis); */
 
     return el;
   }
@@ -114,14 +105,13 @@ window.AnimePage = {
     let aninfo = obj.data.attributes;
     let relationships = obj.data.relationships;
 
-    document.getElementById(
-      "anime-results"
-    ).style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo
-      .coverImage.original})`;
-    document.getElementById("anime-results").style.backgroundRepeat = "no-repeat";
-    document.getElementById("anime-results").style.backgroundSize = "cover";
+    let el = document.getElementsByClassName("anime-page")[0];
+    
+    el.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo.coverImage.original})`;
+    el.style.backgroundRepeat = "no-repeat";
+    el.style.backgroundSize = "cover";
 
-    App.on("#anime-results").appendChild(
+    App.on(".anime-page").appendChild(
       App.crel({
         tag: "img",
         className: "hellomoto",
@@ -131,7 +121,7 @@ window.AnimePage = {
       })
     );
 
-    App.on("#anime-results").appendChild(
+    App.on(".anime-page").appendChild(
       App.crel({
         tag: "div",
         className: "anime-info-container",

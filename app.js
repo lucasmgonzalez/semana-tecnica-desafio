@@ -99,6 +99,11 @@ window.AnimePage = {
     });
   },
 
+  show: function (){
+    let el = document.getElementsByClassName('anime-page')[0];
+    el.classList.add('active');
+  },
+
   buildAnimePage: obj => {
     console.log(obj.data.attributes);
 
@@ -110,6 +115,12 @@ window.AnimePage = {
     el.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo.coverImage.original})`;
     el.style.backgroundRepeat = "no-repeat";
     el.style.backgroundSize = "cover";
+
+    let img = document.createElement('img');
+    img.setAttribute('src', aninfo.coverImage.original);
+    img.addEventListener('load', function () {
+      AnimePage.show()
+    });
 
     App.on(".anime-page").appendChild(
       App.crel({

@@ -70,9 +70,19 @@ input[type="text"]{
     color: white;
 }
 
+.anime-page *{
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.anime-page.active *{
+    opacity: 1;
+}
+
 .anime-page .hellomoto{
     width: 30%;
     height: auto;
+    border-radius: 4px;
 }
 
 .anime-page .anime-info-container{
@@ -83,4 +93,41 @@ input[type="text"]{
     box-shadow: 1px 1px 3px black;
     color: black;
     border-radius: 4px;
+}
+
+.back-arrow{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+}
+
+.back-arrow:before,
+.back-arrow:after,
+.back-arrow .arrow-line{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background-color: white;
+}
+
+.back-arrow .arrow-line{
+    width: 25px;
+    top: 10px;
+    left: 3px;
+}
+
+.back-arrow:before{
+    transform: rotate(45deg);
+    top: 15px;
+}
+
+.back-arrow:after{
+    transform: rotate(-45deg);
+    top: 5px;
 }

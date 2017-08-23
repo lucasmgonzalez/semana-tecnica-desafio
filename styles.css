@@ -1,0 +1,38 @@
+#search-results {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.anime-item {
+    width: calc(50% - 30px);
+    height: 200px;
+    background: linear-gradient(#00749c, #00749c, #00749c, #ffb100, #fff, #ffe4b1, #ffe4b1);
+    ;
+    margin: 10px;
+    padding: 5px;
+}
+
+.anime-poster {
+    max-width: 100px;
+}
+
+.anime-title {
+    font-family: "ComicSansMS", sans-serif;
+    font-weight: bolder;
+    font-size: 16px;
+    background: -webkit-linear-gradient(#ff1696, #27fc4f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.anime-synopsis {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+html {
+    background-color: #202020;
+    margin: 0;
+    padding: 0;
+    color: #888;
+}

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Beer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div id="app"></div>
-    
+    <div id="app">
+        <input type="text" name="search" id="animesearch" onkeyup="SearchForm.handle()" />
+        <div id="search-results"></div>
+    </div>
+
     <script type="text/javascript" src="helper.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
+
 </html>

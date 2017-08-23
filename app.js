@@ -102,14 +102,17 @@ window.AnimePage = {
   buildAnimePage: obj => {
     console.log(obj.data.attributes);
 
-    let aninfo = obj.data.attributes;
-    let relationships = obj.data.relationships;
+    const aninfo = obj.data.attributes;
+    const relationships = obj.data.relationships;
 
-    let el = document.getElementsByClassName("anime-page")[0];
-    
-    el.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo.coverImage.original})`;
-    el.style.backgroundRepeat = "no-repeat";
-    el.style.backgroundSize = "cover";
+    const el = document.getElementsByClassName("anime-page")[0];
+
+    const backgroundEl = el.querySelector(".anime-background");
+
+    backgroundEl.style.backgroundImage =
+      aninfo.coverImage &&
+      `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo.coverImage
+        .original})`;
 
     App.on(".anime-page").appendChild(
       App.crel({
@@ -160,6 +163,14 @@ window.AnimePage = {
         ]
       })
     );
+
+    const imageLoad = document.createElement("img");
+    imageLoad.src = aninfo.coverImage.original;
+
+    imageLoad.addEventListener("load", function(el) {
+      backgroundEl.classList.add("show");
+      delete this;
+    });
   }
 };
 

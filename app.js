@@ -76,12 +76,12 @@ window.SearchForm = {
   },
 
   buildResultElement: function(result) {
-    let el = document.createElement("a");
+    let el = App.crel({tag: "a"});
     el.setAttribute("href", `anime.html?id=${result.id}`);
     el.classList.add("anime-item");
     el.style.backgroundImage = `url(${result.attributes.posterImage.large})`;
 
-    let title = document.createElement("div");
+    let title = App.crel({tag: "div"});
     title.innerText = result.attributes.canonicalTitle;
     title.classList.add("anime-title");
 
@@ -112,12 +112,12 @@ window.AnimePage = {
 
     let el = document.getElementsByClassName("anime-page")[0];
     
-    el.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo.coverImage.original})`;
+    el.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url(${aninfo.coverImage ? aninfo.coverImage.original : aninfo.posterImage.original})`;
     el.style.backgroundRepeat = "no-repeat";
     el.style.backgroundSize = "cover";
 
-    let img = document.createElement('img');
-    img.setAttribute('src', aninfo.coverImage.original);
+    let img = App.crel({tag: 'img'});
+    img.setAttribute('src', aninfo.coverImage ? aninfo.coverImage.original : aninfo.posterImage.original);
     img.addEventListener('load', function () {
       AnimePage.show()
     });

@@ -16,19 +16,37 @@ body{
 
 nav.main-nav {
     width: 100%;
-    background-color: #e418d7;
+    background-color: #e41847;
     padding: 10px;
     text-align: center;
 }
 
 input[type="text"]{
     width: 50%;
-    padding: 3px 6px;
+    padding: 3px 0;
     border: 0;
     background: transparent;
     border-bottom: 1px solid white;
     color: white;
     outline: none;
+}
+
+input[type="text"]::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:   white;
+}
+input[type="text"]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    white;
+   opacity:  1;
+}
+input[type="text"]::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    white;
+   opacity:  1;
+}
+input[type="text"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    white;
+}
+input[type="text"]::-ms-input-placeholder { /* Microsoft Edge */
+   color:    white;
 }
 
 .anime-item {

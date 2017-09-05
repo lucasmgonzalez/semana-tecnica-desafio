@@ -3,6 +3,7 @@ window.App = {
 
   init: function() {
     this.element = document.getElementById("app");
+    SearchForm.init();
   },
 
   on: function(selector) {
@@ -52,8 +53,15 @@ window.AnimeAPI = {
 window.SearchForm = {
   targetSelector: "#animesearch",
   debounce: null,
+
+  init: function(){
+    this.element = App.on(this.targetSelector);
+
+    this.element.addEventListener('keyup', this.handle);
+  },
+
   handle: function() {
-    let value = document.querySelector(this.targetSelector).value;
+    let value = SearchForm.element.value;
     if (this.debounce) clearTimeout(this.debounce);
 
     if (value.length > 2) {
@@ -66,14 +74,17 @@ window.SearchForm = {
   },
 
   buildResults: function(results) {
-    App.on("#search-results").innerHTML = "";
+    var result = App.on("#search-results")
+    result.innerHTML = "";
 
-    document.getElementById("logogogogo").remove();
+    var logo = document.getElementById("body-logo");
+
+    if (logo) logo.remove();
 
     for (i = 0; i < results.length; i++) {
       let el = this.buildResultElement(results[i]);
 
-      App.on("#search-results").appendChild(el);
+      result.appendChild(el);
     }
   },
 
@@ -95,7 +106,6 @@ window.SearchForm = {
 
 window.AnimePage = {
   getAnimeDetails: () => {
-    console.log("working");
     AnimeAPI.getAnime(window.location.search.split("?")[1].split("id=")[1]).then(res => {
       AnimePage.buildAnimePage(res);
     });
@@ -107,8 +117,6 @@ window.AnimePage = {
   },
 
   buildAnimePage: obj => {
-    console.log(obj.data.attributes);
-
     const aninfo = obj.data.attributes;
     const relationships = obj.data.relationships;
 
@@ -127,7 +135,7 @@ window.AnimePage = {
     App.on(".anime-page").appendChild(
       App.crel({
         tag: "img",
-        className: "hellomoto",
+        className: "anime-poster",
         attributes: {
           src: aninfo.posterImage.medium
         }

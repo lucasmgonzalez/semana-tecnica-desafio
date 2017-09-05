@@ -68,6 +68,8 @@ window.SearchForm = {
   buildResults: function(results) {
     App.on("#search-results").innerHTML = "";
 
+    document.getElementById("logogogogo").remove();
+
     for (i = 0; i < results.length; i++) {
       let el = this.buildResultElement(results[i]);
 
@@ -99,16 +101,16 @@ window.AnimePage = {
     });
   },
 
-  show: function (){
-    let el = document.getElementsByClassName('anime-page')[0];
-    el.classList.add('active');
+  show: function() {
+    let el = document.getElementsByClassName("anime-page")[0];
+    el.classList.add("active");
   },
 
   buildAnimePage: obj => {
     console.log(obj.data.attributes);
 
-    let aninfo = obj.data.attributes;
-    let relationships = obj.data.relationships;
+    const aninfo = obj.data.attributes;
+    const relationships = obj.data.relationships;
 
     let el = document.getElementsByClassName("anime-page")[0];
     
@@ -171,6 +173,14 @@ window.AnimePage = {
         ]
       })
     );
+
+    const imageLoad = document.createElement("img");
+    imageLoad.src = aninfo.coverImage.original;
+
+    imageLoad.addEventListener("load", function(el) {
+      backgroundEl.classList.add("show");
+      delete this;
+    });
   }
 };
 

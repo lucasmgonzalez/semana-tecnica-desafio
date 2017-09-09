@@ -11,19 +11,20 @@
 </head>
 
 <body>
-    <div id="app">
+    <div class="app">
         <header class="main-header">
-            <div id="kensaku" class="header-logo">検索</div>
+            <div class="kensaku header-logo">検索</div>
             <nav class="main-nav">
-                <input type="search" name="search" id="animesearch" placeholder="Search an anime" autofocus />
+                <input type="search" name="search" class="animesearch" placeholder="Search an anime" autofocus />
             </nav>
+            <div class="loading-spinner" />
         </header>
-        <div id="search-results"></div>
+        <div class="search-results"></div>
 
 
     </div>
 
-    <div id="body-logo">ANIME NO KENSAKU</div>
+    <div class="body-logo">ANIME NO KENSAKU</div>
 
     <script type="text/javascript" src="helper.js"></script>
     <script type="text/javascript" src="app.js"></script>

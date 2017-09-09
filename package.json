@@ -1,0 +1,15 @@
+{
+  "name": "semana-tecnica-desafio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lucasmgonzalez/semana-tecnica-desafio.git",
+  "author": "pgsil <Pedroion@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "dependencies": {
+    "eslint": "^4.6.1"
+  }
+}

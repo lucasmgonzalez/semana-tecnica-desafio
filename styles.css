@@ -8,14 +8,9 @@ body {
     padding: 0;
     color: #e4e4e4;
     background-color: #171717;
-    min-height: 100vh;
 }
 
-#app {
-    position: relative;
-}
-
-#search-results {
+.search-results {
     min-width: 305px;
     max-width: 1024px;
     margin: 0 auto;
@@ -36,6 +31,11 @@ body {
     margin: 10px;
     padding: 10px 15px;
     text-decoration: none;
+    transition: background-size 0.3s ease;
+}
+
+.anime-item:hover {
+    background-size: 110%;
 }
 
 .anime-title {
@@ -50,6 +50,56 @@ body {
     font-size: 16px;
     text-shadow: 1px 1px 3px black;
     color: white;
+    transition: font-size .3s ease;
+}
+
+.anime-item:hover .anime-title {
+    font-size: 18px;
+}
+
+.loading-spinner {
+    width: 15%;
+    height: 60px;
+    position: relative;
+    animation: load2 2s infinite ease 1.5s;
+    transition: opacity .3s ease;
+    opacity: 0;
+}
+
+.loading-spinner::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 2px solid #951fdd;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-spinner::before {
+    content: '';
+    width: 30px;
+    height: 46px;
+    position: absolute;
+    top: 50%;
+    border-radius: 76%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+    background: #202020;
+    z-index: 1;
+}
+
+@-webkit-keyframes load2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -66,6 +116,9 @@ body {
     background-repeat: no-repeat;
     position: relative;
     padding-top: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 1s ease;
 }
 
 .anime-background {
@@ -81,10 +134,6 @@ body {
 
 .anime-background.show {
     opacity: 1;
-}
-
-.anime-page * {
-    transition: opacity 1s ease;
 }
 
 .anime-page .anime-poster {
@@ -107,16 +156,15 @@ body {
     animation-duration: 500ms;
 }
 
-@media(max-width: 960px){
+@media(max-width: 960px) {
     .anime-page .anime-poster {
         width: 50%;
-        margin:auto;
+        margin: auto;
         height: auto;
         transition: opacity 500ms ease;
         animation-name: slidein;
         animation-duration: 500ms;
     }
-
     .anime-page .anime-info-container {
         align-self: center;
         width: 100%;
@@ -127,7 +175,7 @@ body {
         transition: opacity 500ms ease;
         animation-name: slidein;
         animation-duration: 500ms;
-    }    
+    }
 }
 
 
@@ -197,7 +245,7 @@ body {
     }
 }
 
-header.main-header{
+.main-header {
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -208,7 +256,7 @@ header.main-header{
     height: 60px;
 }
 
-nav.main-nav {
+.main-nav {
     width: 90%;
     padding: 10px;
     text-align: center;
@@ -220,9 +268,10 @@ nav.main-nav {
     color: rgb(195, 195, 195);
     font-weight: 100;
     line-height: 60px;
+    overflow: hidden;
 }
 
-nav.main-nav input[type="search"] {
+.main-nav input[type="search"] {
     width: 100%;
     padding: 3px 0;
     border: 0;
@@ -237,32 +286,45 @@ nav.main-nav input[type="search"] {
     font-weight: 100;
 }
 
-nav.main-nav input[type="search"]::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:   white;
-}
-nav.main-nav input[type="search"]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    white;
-   opacity:  1;
-}
-nav.main-nav input[type="search"]::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    white;
-   opacity:  1;
-}
-nav.main-nav input[type="search"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    white;
-}
-nav.main-nav input[type="search"]::-ms-input-placeholder { /* Microsoft Edge */
-   color:    white;
+.main-nav input[type="search"]::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: white;
 }
 
-#body-logo {
+.main-nav input[type="search"]:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: white;
+    opacity: 1;
+}
+
+.main-nav input[type="search"]::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: white;
+    opacity: 1;
+}
+
+.main-nav input[type="search"]:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+}
+
+.main-nav input[type="search"]::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+}
+
+.body-logo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 250px;
     color: rgba(255, 255, 255, 0.24);
     font-weight: 100;
+    font-size: 15vw;
+    width: 100%;
+    user-select: none;
+    cursor: default;
+    padding-left: 5%;
 }
 
 @keyframes slidein {
@@ -272,4 +334,8 @@ nav.main-nav input[type="search"]::-ms-input-placeholder { /* Microsoft Edge */
     to {
         opacity: 1;
     }
+}
+
+.opacityone {
+    opacity: 1;
 }
